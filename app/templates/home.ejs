@@ -31,7 +31,7 @@
 
         </div>
 
-        <script src="https://elements.cronofy.com/js/CronofyElements.v1.2.3.js"></script>
+        <script src="https://elements.cronofy.com/js/CronofyElements.v1.12.1.js"></script>
         <script>
             CronofyElements.CalendarSync({
                 element_token: "<%= token %>",
@@ -44,7 +44,7 @@
             });
 
             const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            
+
             CronofyElements.AvailabilityRules({
                 element_token: "<%= token %>",
                 target_id: "cronofy-availability-rules",

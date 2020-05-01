@@ -21,14 +21,13 @@
                 <div id="cronofy-availability-viewer"></div>
             </div>
 
-            <script src="https://elements.cronofy.com/js/CronofyElements.v1.2.3.js"></script>
+            <script src="https://elements.cronofy.com/js/CronofyElements.v1.12.1.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
             <script>
-                const today = new Date();
-                const dd = String(today.getDate()).padStart(2, '0');
-                const mm = String(today.getMonth() + 1).padStart(2, '0');
-                const yyyy = today.getFullYear();
+                const today = moment();
 
                 const interviewSubmit = res => {
+
                     if (res.notification.type !== "slot_selected") return;
                     const slot = JSON.stringify(res.notification.slot);
                     window.location.href = `/submit?slot=${slot}`;
@@ -47,10 +46,12 @@
                             ]
                         }
                     ],
-                    required_duration: { minutes: 60 },
+                    required_duration: { minutes: 30 },
                     available_periods: [
-                        { start: `${yyyy}-${mm}-${parseInt(dd) + 1}T09:00:00Z`, end: `${yyyy}-${mm}-${parseInt(dd) + 1}T18:00:00Z` },
-                        { start: `${yyyy}-${mm}-${parseInt(dd) + 2}T09:00:00Z`, end: `${yyyy}-${mm}-${parseInt(dd) + 2}T18:00:00Z` }
+                        { start: today.hour(9).minute(0).second(0).millisecond(0).add(1,'day').format(), end: today.hour(18).minute(0).second(0).millisecond(0).format() },
+                        { start: today.hour(9).minute(0).second(0).millisecond(0).add(1, 'day').format(), end: today.hour(18).minute(0).second(0).millisecond(0).format() },
+                        { start: today.hour(9).minute(0).second(0).millisecond(0).add(1, 'day').format(), end: today.hour(18).minute(0).second(0).millisecond(0).format() },
+                        { start: today.hour(9).minute(0).second(0).millisecond(0).add(1, 'day').format(), end: today.hour(18).minute(0).second(0).millisecond(0).format() }
                     ]
                 };
 
